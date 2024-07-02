@@ -1,16 +1,21 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 // import Card from './components/Card'
-import Songs from './components/Songs'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [val, setVal] = useState({name:'Ali',isBanned:false});
+
 
   return (
     <>
-  <Songs/>
+  <div className='p-5'>
+    <h1 className='font-semibold'>Name: {val.name}</h1>
+    <h2 className='font-semibold'>is Banned: {val.isBanned.toString()}</h2>
+    <button onClick={()=>setVal({...val, isBanned: !val.isBanned})} className='px-3  py-1 rounded text-xs bg-blue-500 text-white-900'>chsnger</button>
+  </div>
+
     </>
   )
 }
