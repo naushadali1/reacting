@@ -1,36 +1,20 @@
-import React from 'react'
+import React from "react";
 
-function Card() {
-  const data =[
-    {name: "Ali", image:"https://images.unsplash.com/photo-1717154462649-e0c67fa0f556?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOHx8fGVufDB8fHx8fA%3D%3D", txt:"Hello this is my first text",inStock:true},
-    {name: "Hassan", image:"https://images.unsplash.com/photo-1717154462649-e0c67fa0f556?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOHx8fGVufDB8fHx8fA%3D%3D", txt:"Hey  seconf text", inStock:false},
-    {name: "Muhammad", image:"https://images.unsplash.com/photo-1717154462649-e0c67fa0f556?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOHx8fGVufDB8fHx8fA%3D%3Do", txt:"Hello tjis is my third text", inStock:true},
-    {name: "Naushad", image:"https://images.unsplash.com/photo-1717154462649-e0c67fa0f556?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOHx8fGVufDB8fHx8fA%3D%3D", txt:"Hello tjis is my fourth text", inStock:false},
-  ]
+function Card({data, index , handleClick}) {
+  const {image, name, added, artist} = data;
   return (
-  <>
-  <div className='w-full h-screen bg-red-200 flex justify-center items-center gap-10 '>
-    {data.map((elem,index)=>(
- <div key={index} className=' w-52  rounded-md '>
- <div className='w-full h-32 bg-red-400 '>
-    <img className='w-full h-full object-cover' src={elem.image} alt="" />
- </div>
- <div className='w-full px-3 py-4 '>
-   <h1 className='font-semibold'>{elem.name}
+    <div className="w-60 p-4 bg-zinc-100 flex gap-4 relative pb-8 mt-10">
+      <div className="w-20 h-20 bg-orange-600 rounded-md overflow-hidden ">
+        <img className="w-full h-full object-cover" src={image} alt="" />
+      </div>
+      <div className="">
+        <h3 className="text-lg font-semibold leading-none mb-1">{name}</h3>
+        <h5 className="text-xs font-semibold "> {artist}</h5>
+      </div>
+      <button onClick={()=>handleClick(index)} className={`text-white text-sm rounded-full px-3 py-1 ${added === false? "bg-orange-600": "bg-teal-600"} whitespace-nowrap absolute bottom-0 left-1/2  translate-y-[50%] -translate-x-[50%]`}>{added === false ? "Add to Favorite": "Added"}</button>
 
-   </h1>
-   <p className='text-xs mt-3'>{elem.txt}</p>
-   <button className={`px-4 py-1 ${elem.inStock?'bg-blue-600':'bg-red-600'} mt-3 text-xs rounded text-white`}>{elem.inStock?"In Stock":"Out of Stock"}</button>
- </div>
- </div>
-    ))}
-   
-    
-
-  </div>
-  
-  </>
-  )
+    </div>
+  );
 }
 
-export default Card
+export default Card;
